@@ -1,0 +1,13 @@
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GOTO="gpib_firmware_start"
+GOTO="gpib_firmware_end"
+LABEL="gpib_firmware_start"
+
+# Agilent 82357A
+ATTR{idVendor}=="0957", ATTR{idProduct}=="0007", PROGRAM="/usr/bin/systemd-escape -p %N", ENV{SYSTEMD_WANTS}="linux-gpib-firmware-loader-agilent82357a@%c.service"
+# Agilent 82357B
+# ATTR{idVendor}=="0957", ATTR{idProduct}=="0518", ENV{SYSTEMD_WANTS}="linux-gpib-firmware-loader-agilent82357b@%N.service"
+ATTR{idVendor}=="0957", ATTR{idProduct}=="0518", PROGRAM="/usr/bin/systemd-escape -p %N", ENV{SYSTEMD_WANTS}="linux-gpib-firmware-loader-agilent82357b@%c.service"
+# NI-USB-B and Keithley KUSB-488
+ATTR{idVendor}=="3923", ATTR{idProduct}=="702b|713b", PROGRAM="/usr/bin/systemd-escape -p %N", ENV{SYSTEMD_WANTS}="linux-gpib-firmware-loader-ni@%c.service"
+
+LABEL="gpib_firmware_end"
