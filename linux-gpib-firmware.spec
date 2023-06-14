@@ -8,7 +8,7 @@
 
 Name:           linux-gpib-firmware
 Version:        %(echo %{fwdate} | tr -d -)
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Firmware for GPIB (IEEE-488) adapters
 BuildArch:      noarch
 
@@ -22,7 +22,7 @@ Source3:        %{ni_loader}.service.in
 Source4:        61-%{name}.rules
 
 %{?systemd_requires}
-Requires:       linux-gpib dkms-linux-gpib
+# Requires:       linux-gpib dkms-linux-gpib
 Requires:       fxload
 BuildRequires:  systemd
 BuildRequires:  sed
