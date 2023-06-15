@@ -13,4 +13,6 @@ Packaged from https://linux-gpib.sourceforge.io/firmware/
 
 `udev` rules are installed that trigger the loading of firmware (via `systemd` service files) when the USB devices are connected (or on boot).
 
+This package is derived from  https://github.com/vddvss/linux-gpib-firmware-packaging
+
 
